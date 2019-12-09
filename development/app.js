@@ -271,7 +271,8 @@ window.onload = function() {
             mtl: "/development/models/die.mtl"
         },
         {
-            obj: "/development/models/suzanne.obj",
+            name: "suzanne",
+            obj: "/models/spiral.obj",
             mtl: true
         } // ,
         // {

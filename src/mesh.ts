@@ -246,7 +246,7 @@ export default class Mesh {
                   ['16/92/11', '14/101/22', '1/69/1'];
                 */
 
-                const triangles = triangulate(elements);
+                const triangles = triangulate(elements, verts.map(parseFloat));
                 for (const triangle of triangles) {
                     for (let j = 0, eleLen = triangle.length; j < eleLen; j++) {
                         const hash = triangle[j] + "," + currentMaterialIndex;
@@ -483,18 +483,18 @@ export default class Mesh {
 
             const magBitangent0 = Math.sqrt(
                 x_resBitangent0 * x_resBitangent0 +
-                    y_resBitangent0 * y_resBitangent0 +
-                    z_resBitangent0 * z_resBitangent0,
+                y_resBitangent0 * y_resBitangent0 +
+                z_resBitangent0 * z_resBitangent0,
             );
             const magBitangent1 = Math.sqrt(
                 x_resBitangent1 * x_resBitangent1 +
-                    y_resBitangent1 * y_resBitangent1 +
-                    z_resBitangent1 * z_resBitangent1,
+                y_resBitangent1 * y_resBitangent1 +
+                z_resBitangent1 * z_resBitangent1,
             );
             const magBitangent2 = Math.sqrt(
                 x_resBitangent2 * x_resBitangent2 +
-                    y_resBitangent2 * y_resBitangent2 +
-                    z_resBitangent2 * z_resBitangent2,
+                y_resBitangent2 * y_resBitangent2 +
+                z_resBitangent2 * z_resBitangent2,
             );
 
             unpacked.tangents[i0 * 3 + 0] += x_resTangent0 / magTangent0;
@@ -568,8 +568,8 @@ export default class Mesh {
                         if (!material) {
                             console.warn(
                                 'Material "' +
-                                    this.materialNames[materialIndex] +
-                                    '" not found in mesh. Did you forget to call addMaterialLibrary(...)?"',
+                                this.materialNames[materialIndex] +
+                                '" not found in mesh. Did you forget to call addMaterialLibrary(...)?"',
                             );
                             break;
                         }
@@ -584,8 +584,8 @@ export default class Mesh {
                         if (!material) {
                             console.warn(
                                 'Material "' +
-                                    this.materialNames[materialIndex] +
-                                    '" not found in mesh. Did you forget to call addMaterialLibrary(...)?"',
+                                this.materialNames[materialIndex] +
+                                '" not found in mesh. Did you forget to call addMaterialLibrary(...)?"',
                             );
                             break;
                         }
@@ -600,8 +600,8 @@ export default class Mesh {
                         if (!material) {
                             console.warn(
                                 'Material "' +
-                                    this.materialNames[materialIndex] +
-                                    '" not found in mesh. Did you forget to call addMaterialLibrary(...)?"',
+                                this.materialNames[materialIndex] +
+                                '" not found in mesh. Did you forget to call addMaterialLibrary(...)?"',
                             );
                             break;
                         }
@@ -616,8 +616,8 @@ export default class Mesh {
                         if (!material) {
                             console.warn(
                                 'Material "' +
-                                    this.materialNames[materialIndex] +
-                                    '" not found in mesh. Did you forget to call addMaterialLibrary(...)?"',
+                                this.materialNames[materialIndex] +
+                                '" not found in mesh. Did you forget to call addMaterialLibrary(...)?"',
                             );
                             break;
                         }
@@ -630,8 +630,8 @@ export default class Mesh {
                         if (!material) {
                             console.warn(
                                 'Material "' +
-                                    this.materialNames[materialIndex] +
-                                    '" not found in mesh. Did you forget to call addMaterialLibrary(...)?"',
+                                this.materialNames[materialIndex] +
+                                '" not found in mesh. Did you forget to call addMaterialLibrary(...)?"',
                             );
                             break;
                         }
@@ -646,8 +646,8 @@ export default class Mesh {
                         if (!material) {
                             console.warn(
                                 'Material "' +
-                                    this.materialNames[materialIndex] +
-                                    '" not found in mesh. Did you forget to call addMaterialLibrary(...)?"',
+                                this.materialNames[materialIndex] +
+                                '" not found in mesh. Did you forget to call addMaterialLibrary(...)?"',
                             );
                             break;
                         }
@@ -662,8 +662,8 @@ export default class Mesh {
                         if (!material) {
                             console.warn(
                                 'Material "' +
-                                    this.materialNames[materialIndex] +
-                                    '" not found in mesh. Did you forget to call addMaterialLibrary(...)?"',
+                                this.materialNames[materialIndex] +
+                                '" not found in mesh. Did you forget to call addMaterialLibrary(...)?"',
                             );
                             break;
                         }
@@ -676,8 +676,8 @@ export default class Mesh {
                         if (!material) {
                             console.warn(
                                 'Material "' +
-                                    this.materialNames[materialIndex] +
-                                    '" not found in mesh. Did you forget to call addMaterialLibrary(...)?"',
+                                this.materialNames[materialIndex] +
+                                '" not found in mesh. Did you forget to call addMaterialLibrary(...)?"',
                             );
                             break;
                         }
@@ -690,8 +690,8 @@ export default class Mesh {
                         if (!material) {
                             console.warn(
                                 'Material "' +
-                                    this.materialNames[materialIndex] +
-                                    '" not found in mesh. Did you forget to call addMaterialLibrary(...)?"',
+                                this.materialNames[materialIndex] +
+                                '" not found in mesh. Did you forget to call addMaterialLibrary(...)?"',
                             );
                             break;
                         }
@@ -704,8 +704,8 @@ export default class Mesh {
                         if (!material) {
                             console.warn(
                                 'Material "' +
-                                    this.materialNames[materialIndex] +
-                                    '" not found in mesh. Did you forget to call addMaterialLibrary(...)?"',
+                                this.materialNames[materialIndex] +
+                                '" not found in mesh. Did you forget to call addMaterialLibrary(...)?"',
                             );
                             break;
                         }
@@ -718,8 +718,8 @@ export default class Mesh {
                         if (!material) {
                             console.warn(
                                 'Material "' +
-                                    this.materialNames[materialIndex] +
-                                    '" not found in mesh. Did you forget to call addMaterialLibrary(...)?"',
+                                this.materialNames[materialIndex] +
+                                '" not found in mesh. Did you forget to call addMaterialLibrary(...)?"',
                             );
                             break;
                         }
@@ -766,13 +766,178 @@ export default class Mesh {
     }
 }
 
-function* triangulate(elements: string[]) {
+function* triangulate(elements: string[], verts: number[]) {
+    const _X = 0;
+    const _Y = 1;
+    const _Z = 2;
+    const _R1_C1 = 0;
+    const _R2_C1 = 1;
+    const _R3_C1 = 2;
+    const _R1_C2 = 3;
+    const _R2_C2 = 4;
+    const _R3_C2 = 5;
+    const _R1_C3 = 6;
+    const _R2_C3 = 7;
+    const _R3_C3 = 8;
+    const EPSILON = 0.0001;
+
     if (elements.length <= 3) {
         yield elements;
     } else if (elements.length === 4) {
         yield [elements[0], elements[1], elements[2]];
         yield [elements[2], elements[3], elements[0]];
     } else {
+        const indices: number[] = elements.map((e) => +e.split('/')[0] - 1);
+
+        // Project all the points into 2D. This assumes that all the polygon
+        // points are (nearly) coplanar
+
+        for (let i = 1; i < indices.length - 1; i++) {
+            // Pick three guarenteed coplanar points
+            const p0: number[] = [verts[indices[i] * 3 + 0], verts[indices[i] * 3 + 1], verts[indices[i] * 3 + 2]];
+            const p1: number[] = [verts[indices[i - 1] * 3 + 0], verts[indices[i - 1] * 3 + 1], verts[indices[i - 1] * 3 + 2]];
+            const p2: number[] = [verts[indices[i + 1] * 3 + 0], verts[indices[i + 1] * 3 + 1], verts[indices[i + 1] * 3 + 2]];
+
+            // Create two vectors out of them
+            const v0 = [
+                p1[_X] - p0[_X], // X
+                p1[_Y] - p0[_Y], // Y
+                p1[_Z] - p0[_Z]  // Z
+            ];
+
+            const v1 = [
+                p2[_X] - p0[_X], // X
+                p2[_Y] - p0[_Y], // Y
+                p2[_Z] - p0[_Z]  // Z
+            ];
+
+            // Move on to a new set of points if these vectors
+            // are collinear
+            const ratios = [
+                v1[_X] / v0[_X],
+                v1[_Y] / v0[_Y],
+                v1[_Z] / v0[_Z]
+            ];
+
+            const isCollinear =
+                Math.abs(ratios[0] - ratios[1]) < EPSILON &&
+                Math.abs(ratios[1] - ratios[2]) < EPSILON &&
+                Math.abs(ratios[2] - ratios[0]) < EPSILON;
+
+            if (isCollinear) {
+                continue;
+            }
+
+            // Normalize one of them
+            const v0Mag = Math.sqrt(
+                v0[_X] * v0[_X] +
+                v0[_Y] * v0[_Y] +
+                v0[_Z] * v0[_Z]
+            );
+
+            const u0 = [
+                v0[_X] / v0Mag, // X
+                v0[_Y] / v0Mag, // Y
+                v0[_Z] / v0Mag  // Z
+            ];
+
+            // Find how much of v1 is made out of u0 by projecting v1 onto u0: dot(u0, v1) * u0
+            const u0DotV1 =
+                u0[_X] * v1[_X] +
+                u0[_Y] * v1[_Y] +
+                u0[_Z] * v1[_Z];
+
+            const projected = [
+                u0[_X] * u0DotV1, // X
+                u0[_Y] * u0DotV1, // Y
+                u0[_Z] * u0DotV1  // Z
+            ];
+
+            // Remove projected from v1 to find a vector orthogonal to u0
+            const o1 = [
+                v1[_X] - projected[_X], // X
+                v1[_Y] - projected[_Y], // Y
+                v1[_Z] - projected[_Z]  // Z
+            ];
+
+            const o1Mag = Math.sqrt(
+                o1[_X] * o1[_X] +
+                o1[_Y] * o1[_Y] +
+                o1[_Z] * o1[_Z]
+            );
+
+            const u1 = [
+                o1[_X] / o1Mag, // X
+                o1[_Y] / o1Mag, // Y
+                o1[_Z] / o1Mag  // Z
+            ];
+
+            // Now build a third orthonormal vector out of u0 and u1
+            const u2 = [
+                u0[_Y] * u1[_Z] - u0[_Z] * u1[_Y], // X
+                u0[_Z] * u1[_X] - u0[_X] * u1[_Z], // Y
+                u0[_X] * u1[_Y] - u0[_Y] * u1[_X]  // Z
+            ];
+
+            // Create an matrix out of the orthonormal basis {u0, u1, u2}
+            const rot = [
+                ...u0, // col 1
+                ...u1, // col 2
+                ...u2  // col 3
+            ];
+
+            // Transpose an orthonormal basis to invert it
+            const invRot = [
+                rot[_R1_C1], rot[_R1_C2], rot[_R1_C3], // col 1
+                rot[_R2_C1], rot[_R2_C2], rot[_R2_C3], // col 2
+                rot[_R3_C1], rot[_R3_C2], rot[_R3_C3]  // col 3
+            ];
+
+            const projectedVerts = indices.map((index) => {
+                const vert = [verts[index * 3 + 0] - p0[_X], verts[index * 3 + 1] - p0[_Y], verts[index * 3 + 2] - p0[_Z]];
+
+                // Transform onto the x/y plane
+                return [
+                    invRot[_R1_C1] * vert[0] + invRot[_R1_C2] * vert[1] + invRot[_R1_C3] * vert[2], // X
+                    invRot[_R2_C1] * vert[0] + invRot[_R2_C2] * vert[1] + invRot[_R2_C3] * vert[2], // Y
+                ];
+            });
+
+            console.log("given", { elements, verts, indices, p0, p1, p2, v0, v1, u0, u1, u2, projectedVerts, rot, invRot });
+            /*
+            function isDiagonal(n: number, verts : number[][], i0 : number, i1 : number) {
+                const iM = (i0 - 1) % n;
+                const iP = (i0 + 1) % n;
+                if (!segmentInCone())
+            }
+
+            function triangulate(vlist : number[][], tlist: number[][][]) {
+                let n = vlist.length;
+                if (n === 3) {
+                    tlist.push([vlist[0], vlist[1], vlist[2]]);
+                    return;
+                }
+                for (let i0 = 0; i0 < n; i0++) {
+                    const i1 = (i0 + 1) % n;
+                    const i2 = (i0 + 2) % n;
+                    if (isDiagonal(vlist, i0, i2)) {
+                        removeVertex(vlist, i1, sublist);
+                        triangulate(sublist, tlist);
+                        return;
+                    }
+                }
+
+            }
+            */
+
+            // find an ear
+
+            // emit the ear
+
+            // remove the ear from the polygon
+
+            // if we're done, break
+        }
         for (let i = 1; i < elements.length - 1; i++) {
             yield [elements[0], elements[i], elements[i + 1]];
         }
