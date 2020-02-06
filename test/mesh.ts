@@ -95,9 +95,9 @@ describe('Mesh', function () {
   describe('Test face parsing', function () {
     const data = `
     v 0 0 0
-    v 1 1 1
-    v 2 2 2
-    v 3 3 3
+    v 1 0 1
+    v 1 2 3
+    v 0 2 2
 
     vn 0 0 0
     vn 1 1 1
@@ -116,7 +116,7 @@ describe('Mesh', function () {
       `
       const m = new Mesh(meshData);
       expect(m.vertices).to.deep.equal([
-        0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3,
+        0, 0, 0, 1, 0, 1, 1, 2, 3, 0, 2, 2,
       ]);
       expect(m.vertexNormals).to.deep.equal([
         0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3,
@@ -174,37 +174,28 @@ describe('Mesh', function () {
       ]);
     });
 
-    it('should triangulate n-gons', function () {
+    it('should triangulate n-gons with collinear verts', function () {
       const data = `
-      v 0 0 0
-      v 1 1 1
-      v 2 2 2
-      v 3 3 3
-      v 4 4 4
-      v 5 5 5
-      v 6 6 6
+      v 0 1 1
+      v 0 2 0
+      v 2 0 4
+      v 0 0 2
 
       vn 0 0 0
       vn 1 1 1
       vn 2 2 2
       vn 3 3 3
-      vn 4 4 4
-      vn 5 5 5
-      vn 6 6 6
 
       vt 0.0 0.0
       vt 0.1 0.1
       vt 0.2 0.2
       vt 0.3 0.3
-      vt 0.4 0.4
-      vt 0.5 0.5
-      vt 0.6 0.6
 
-      f 1/1/1 2/2/2 3/3/3 4/4/4 5/5/5 6/6/6
+      f 1/1/1 2/2/2 3/3/3 4/4/4
       `
       const m = new Mesh(data);
       expect(m.indices).to.deep.equal([
-        0, 1, 2, 0, 2, 3, 0, 3, 4, 0, 4, 5
+        0, 1, 2, 2, 3, 0
       ]);
     });
   });
