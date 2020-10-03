@@ -36,14 +36,14 @@ export function perp(v: Vec2): Vec2 {
     return [-v[Y], v[X]];
 }
 
-function subtract2(a: Vec2, b: Vec2): Vec2 {
+export function subtract2(a: Vec2, b: Vec2): Vec2 {
     return [
         a[X] - b[X],
         a[Y] - b[Y]
     ];
 }
 
-function pointsAreCollinear2(v0: Vec2, v1: Vec2, v2: Vec2) {
+export function pointsAreCollinear2(v0: Vec2, v1: Vec2, v2: Vec2) {
     return Math.abs(perpDot(
         subtract2(v0, v1),
         subtract2(v2, v1)
@@ -71,7 +71,7 @@ export function pointIsInCCWSweep(
 
 // Vec3
 
-function subtract3(a: Vec3, b: Vec3): Vec3 {
+export function subtract3(a: Vec3, b: Vec3): Vec3 {
     return [
         a[X] - b[X],
         a[Y] - b[Y],
@@ -79,7 +79,7 @@ function subtract3(a: Vec3, b: Vec3): Vec3 {
     ];
 }
 
-function normalize3(v: Vec3): Vec3 {
+export function normalize3(v: Vec3): Vec3 {
     const mag = Math.sqrt(dot3(v, v));
     return [
         v[X] / mag,
@@ -88,7 +88,7 @@ function normalize3(v: Vec3): Vec3 {
     ];
 }
 
-function scale3(v: Vec3, s: number): Vec3 {
+export function scale3(v: Vec3, s: number): Vec3 {
     return [
         v[X] * s,
         v[Y] * s,
@@ -96,18 +96,18 @@ function scale3(v: Vec3, s: number): Vec3 {
     ];
 }
 
-function dot3(a: Vec3, b: Vec3): number {
+export function dot3(a: Vec3, b: Vec3): number {
     return a[X] * b[X] +
            a[Y] * b[Y] +
            a[Z] * b[Z];
         
 }
 
-function sqrMag3(a: Vec3) {
+export function sqrMag3(a: Vec3) {
     return a[0] * a[0] + a[1] * a[1] + a[2] * a[2];
 }
 
-function cross(a: Vec3, b: Vec3) : Vec3 {
+export function cross(a: Vec3, b: Vec3) : Vec3 {
     return [
         a[Y] * b[Z] - a[Z] * b[Y], // X
         a[Z] * b[X] - a[X] * b[Z], // Y
@@ -178,7 +178,7 @@ export function isDiagonal(polygon: Polygon2, idx0: PolygonIndex, idx1: PolygonI
     return true;
 };
 
-function transpose(m: Mat3) : Mat3 {
+export function transpose(m: Mat3) : Mat3 {
     return [
         m[R1_C1], m[R1_C2], m[R1_C3], // col 1
         m[R2_C1], m[R2_C2], m[R2_C3], // col 2
@@ -186,7 +186,7 @@ function transpose(m: Mat3) : Mat3 {
     ];
 }
 
-function transform3(m: Mat3, v: Vec3) : Vec3 {
+export function transform3(m: Mat3, v: Vec3) : Vec3 {
     return [
         m[R1_C1] * v[0] + m[R1_C2] * v[1] + m[R1_C3] * v[2], // X
         m[R2_C1] * v[0] + m[R2_C2] * v[1] + m[R2_C3] * v[2], // Y
@@ -194,14 +194,14 @@ function transform3(m: Mat3, v: Vec3) : Vec3 {
     ];
 }
 
-function pointsAreCollinear3(v0: Vec3, v1: Vec3, v2: Vec3) : boolean {
+export function pointsAreCollinear3(v0: Vec3, v1: Vec3, v2: Vec3) : boolean {
     return Math.abs(sqrMag3(cross(
         subtract3(v0, v1),
         subtract3(v2, v1)
     ))) < EPSILON;
 }
 
-function convertPolygonTo2D(polygon: Polygon3): Polygon2 {
+export function convertPolygonTo2D(polygon: Polygon3): Polygon2 {
 
         // Rotate all the points onto the x-y plane. This assumes that all the polygon
         // points are (nearly) coplanar

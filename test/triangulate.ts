@@ -1,38 +1,14 @@
 import { expect } from 'chai';
-
-import * as Triangulate from '../src/triangulate';
+var fs = require('fs');
+ 
+fs.readFile('../src/triangluate.ts', 'utf8', function(err, contents) {
+    console.log(contents);
+});
+ 
+console.log('after calling readFile');
+//import * as Triangulate from '../src/triangulate';
 
 describe('Triangulate', function () {
-    describe('Test perp(...)', function () {
-        it('should have the right answer for obvious input', function () {
-            {
-                const result = Triangulate.perp([0, 0]);
-                expect(result[0]).to.be.closeTo(0, 0.0001);
-                expect(result[1]).to.be.closeTo(0, 0.0001);
-            }
-            {
-                const result = Triangulate.perp([1, 0]);
-                expect(result[0]).to.be.closeTo(Math.cos(Math.PI / 2), 0.0001);
-                expect(result[1]).to.be.closeTo(Math.sin(Math.PI / 2), 0.0001);
-            }
-        });
-        it('should have the right answer for less obvious input', function () {
-            {
-                const angle = 293.13;
-                const input : Triangulate.Vec2 = [
-                    -92.3 * Math.cos(angle),
-                    -92.3 * Math.sin(angle)
-                ];
-                const inputRotated : Triangulate.Vec2 = [
-                    -92.3 * Math.cos(angle + Math.PI / 2),
-                    -92.3 * Math.sin(angle + Math.PI / 2)
-                ];
-                const result = Triangulate.perp(input);
-                expect(result[0]).to.be.closeTo(inputRotated[0], 0.0001);
-                expect(result[1]).to.be.closeTo(inputRotated[1], 0.0001);
-            }
-        });
-    });
     describe('Test perpDot(...)', function () {
         it('should have the right answer for obvious input', function () {
             {
@@ -71,6 +47,36 @@ describe('Triangulate', function () {
             );
             expect(result).to.be.closeTo(4566.811, 0.000001);
         })
+    });
+    describe('Test perp(...)', function () {
+        it('should have the right answer for obvious input', function () {
+            {
+                const result = Triangulate.perp([0, 0]);
+                expect(result[0]).to.be.closeTo(0, 0.0001);
+                expect(result[1]).to.be.closeTo(0, 0.0001);
+            }
+            {
+                const result = Triangulate.perp([1, 0]);
+                expect(result[0]).to.be.closeTo(Math.cos(Math.PI / 2), 0.0001);
+                expect(result[1]).to.be.closeTo(Math.sin(Math.PI / 2), 0.0001);
+            }
+        });
+        it('should have the right answer for less obvious input', function () {
+            {
+                const angle = 293.13;
+                const input : Triangulate.Vec2 = [
+                    -92.3 * Math.cos(angle),
+                    -92.3 * Math.sin(angle)
+                ];
+                const inputRotated : Triangulate.Vec2 = [
+                    -92.3 * Math.cos(angle + Math.PI / 2),
+                    -92.3 * Math.sin(angle + Math.PI / 2)
+                ];
+                const result = Triangulate.perp(input);
+                expect(result[0]).to.be.closeTo(inputRotated[0], 0.0001);
+                expect(result[1]).to.be.closeTo(inputRotated[1], 0.0001);
+            }
+        });
     });
     describe('Test pointIsInCCWSweep(...)', function () {
         it('should have the right answers for first quadrant sweep', function () {
